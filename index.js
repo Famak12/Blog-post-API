@@ -99,14 +99,10 @@ app.patch('/posts/:id', (req, res) => {
 app.delete('/posts/:id', (req, res) => {
   const id = parseInt(req.params.id);
   const selectedPostIndex = posts.findIndex(p => p.id === id);
-  if (selectedPostIndex > -1) {
+  // if (selectedPostIndex === -1) return res.status(404).json({error : `Post Not found`}); 
+
     posts.splice(selectedPostIndex, 1);
-    res.json({message : `Post removed successfully`});
-  } else {
-    res
-    .status(404)
-    .json({error : `Post Not found`})
-  }
+    res.json({message : "Post removed successfully"});
 
 })
 
